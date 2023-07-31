@@ -2,25 +2,31 @@ import { ItemDetailContainer } from "./components/ItemDetailContainer";
 import { ItemListContainer } from "./components/ItemListContainer";
 import { Navbar } from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
 import { Carrito } from "./components/Carrito";
+import { Checkout } from "./components/Checkout";
+import "./styles/main.css";
+
 
 
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <Navbar />
+      <CartProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+              <Route path="/" element={<ItemListContainer />} />
+              <Route path="/item/:id" element={<ItemDetailContainer />}/>
+              <Route path="/productos" element={<ItemListContainer />} />
+              <Route path="/productos/:categoria" element={<ItemListContainer />} />
+              <Route path="/cart" element={<Carrito />}/>
+              <Route path="/checkout" element={<Checkout />}/>
+          </Routes>
 
-        <Routes>
-            <Route path="/" element={<ItemListContainer />} />
-            <Route path="/item/:id" element={<ItemDetailContainer />}/>
-            <Route path="/productos" element={<ItemListContainer />} />
-            <Route path="/productos/:categoria" element={<ItemListContainer />} />
-            <Route path="/cart" element={<Carrito />}/>
-        </Routes>
-      </BrowserRouter>
+        </BrowserRouter>
+      </CartProvider>
     </div>
   );
 }
-
 export default App;

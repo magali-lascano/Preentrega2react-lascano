@@ -3,7 +3,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-
 .navbarcont {
     background-color: black;
     height: 70px;
@@ -14,8 +13,8 @@
 
 .logo{
     text-decoration: none;
-    margin: 55px;
     color: white;
+    align-items: center;
 }
 
 .menu li{
